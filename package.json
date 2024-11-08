@@ -1,0 +1,53 @@
+{
+  "name": "rewarzo",
+  "private": true,
+  "version": "2.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/react": "2.0.18",
+    "@material-tailwind/react": "2.1.4",
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "@react-three/drei": "^9.108.4",
+    "@react-three/fiber": "^8.16.8",
+    "@vidstack/react": "^0.6.15",
+    "ag-grid-community": "^32.0.2",
+    "ag-grid-react": "^32.0.2",
+    "apexcharts": "3.44.0",
+    "date-fns": "^3.6.0",
+    "framer-motion": "^11.2.10",
+    "lodash": "^4.17.21",
+    "pdfjs-dist": "3.4.120",
+    "polished": "^4.3.1",
+    "primereact": "^10.8.2",
+    "prop-types": "15.8.1",
+    "react": "18.2.0",
+    "react-apexcharts": "1.4.1",
+    "react-awesome-stars-rating": "^0.16.2",
+    "react-complex-tree": "^2.4.4",
+    "react-data-table-component": "^7.6.2",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.17.0",
+    "react-search-autocomplete": "^8.5.2",
+    "react-tailwindcss-select": "^1.8.5",
+    "rewarzo": "file:",
+    "three": "^0.166.1",
+    "typewriter-effect": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.31",
+    "@types/react-dom": "18.2.14",
+    "@vitejs/plugin-react": "4.1.0",
+    "autoprefixer": "10.4.16",
+    "postcss": "8.4.31",
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "0.5.6",
+    "tailwindcss": "3.3.4",
+    "vite": "4.5.0"
+  }
+}

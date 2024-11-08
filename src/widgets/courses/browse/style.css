@@ -1,0 +1,18 @@
+/* style.css */
+
+.hover-card:hover .header-glare::before {
+  content: '';
+  position: absolute;
+  right: 0%;
+  top: 10%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 25%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.5) 75%);
+  transform: rotate(25deg);
+  transition: transform 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.hover-card:hover .header-glare::before {
+  opacity: 1;
+}
