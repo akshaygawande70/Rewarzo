@@ -1,0 +1,58 @@
+export const customerActivityData = [
+  {
+    img: "/img/team-1.jpeg",
+    name: "Sophia Jones",
+    activityType: "Points Added",
+    points: "500",
+    promotion: "Welcome Bonus",
+    online: true,
+    date: "01/11/23 14:30",
+  },
+  {
+    img: "/img/team-2.jpeg",
+    name: "Liam Smith",
+    activityType: "Redemption",
+    points: "-200",
+    promotion: "Gift Voucher",
+    online: false,
+    date: "31/10/23 09:15",
+  },
+  {
+    img: "/img/team-3.jpeg",
+    name: "Olivia Brown",
+    activityType: "Points Added",
+    points: "300",
+    promotion: "Birthday Bonus",
+    online: true,
+    date: "29/10/23 16:50",
+  },
+  {
+    img: "/img/team-4.jpeg",
+    name: "Noah Johnson",
+    activityType: "Promotion Used",
+    points: "N/A",
+    promotion: "Holiday Discount",
+    online: true,
+    date: "28/10/23 11:00",
+  },
+  {
+    img: "/img/bruce-mars.jpeg",
+    name: "Emma Davis",
+    activityType: "Points Added",
+    points: "250",
+    promotion: "Weekly Engagement",
+    online: false,
+    date: "25/10/23 12:20",
+  },
+  {
+    img: "/img/team-3.jpeg",
+    name: "Lucas Garcia",
+    activityType: "Redemption",
+    points: "-300",
+    promotion: "Cashback",
+    online: false,
+    date: "22/10/23 18:10",
+  },
+];
+
+export default customerActivityData;

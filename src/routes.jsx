@@ -5,16 +5,15 @@ import {
   ServerStackIcon,
   RectangleStackIcon,
   BookOpenIcon,
-  BuildingLibraryIcon,
-  StarIcon,
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
-import BrowseCourse from "./pages/dashboard/browse-courses";
-import BrowseCategories from "./pages/dashboard/browse-categories";
-import ExploreCourse from "./pages/dashboard/explore-course";
-import ViewTutorial from "./pages/dashboard/tutorials/view-tutorial";
-import ManageCategories from "./pages/dashboard/manage/categories/manage-categories";
+import LoyaltyTierManagement from "./pages/dashboard/manage/loyalty-tiers/manage-loyalty-tier";
+import CustomerManagement from "./pages/dashboard/manage/customers/manage-customers";
+import ManageOrders from "./pages/dashboard/manage/orders/manage-orders";
+import NewOrderScreen from "./pages/dashboard/manage/orders/new-order";
+import CategoryManagement from "./pages/dashboard/manage/categories/manage-categories";
+import ProductManagement from "./pages/dashboard/manage/products/manage-products";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -50,42 +49,39 @@ export const routes = [
     pages: [
       {
         icon: <BookOpenIcon {...icon} />,
-        name: "Courses",
-        path: "/browse-courses",
-        element: <BrowseCourse />,
+        name: "Loyalty Tier",
+        path: "/manage-loyalty-tier",
+        element: <LoyaltyTierManagement />,
       },
       {
-        icon: <RectangleStackIcon {...icon} />,
+        icon: <BookOpenIcon {...icon} />,
+        name: "Customers",
+        path: "/manage-customers",
+        element: <CustomerManagement />,
+      },
+      {
+        icon: <BookOpenIcon {...icon} />,
+        name: "New Order",
+        path: "/new-order",
+        element: <NewOrderScreen />,
+      },
+      {
+        icon: <BookOpenIcon {...icon} />,
+        name: "Orders",
+        path: "/manage-orders",
+        element: <ManageOrders />,
+      },
+      {
+        icon: <BookOpenIcon {...icon} />,
         name: "Categories",
-        path: "/browse-categories",
-        element: <BrowseCategories />,
+        path: "/manage-categories",
+        element: <CategoryManagement />,
       },
       {
-        icon: <BuildingLibraryIcon {...icon} />,
-        name: "My Library",
-        path: "/browse-my-library",
-        element: <SignUp />,
-      },
-      {
-        icon: <StarIcon {...icon} />,
-        name: "My Favorites",
-        path: "/browse-my-favorites",
-        element: <SignUp />,
-      },
-      {
-        icon: <StarIcon {...icon} />,
-        name: "Explore Course",
-        path: "/explore-course/:courseId",
-        element: <ExploreCourse />,
-        notOnNav: true,
-      },
-      ,
-      {
-        icon: <StarIcon {...icon} />,
-        name: "View Tutorial",
-        path: "/view-tutorial/:tutorialId",
-        element: <ViewTutorial />,
-        notOnNav: true,
+        icon: <BookOpenIcon {...icon} />,
+        name: "Products",
+        path: "/manage-products",
+        element: <ProductManagement />,
       }
     ],
   },
@@ -95,21 +91,9 @@ export const routes = [
     pages: [
       {
         icon: <BookOpenIcon {...icon} />,
-        name: "Manage Categories",
-        path: "/admin/manage-categories",
-        element: <ManageCategories />,
-      },
-      {
-        icon: <RectangleStackIcon {...icon} />,
-        name: "Manage Courses",
-        path: "/admin/manage-courses",
-        element: <BrowseCategories />,
-      },
-      {
-        icon: <StarIcon {...icon} />,
-        name: "Manage Tutorials",
-        path: "/admin/manage-tutorials",
-        element: <ViewTutorial />
+        name: "Orders",
+        path: "/manage-orders",
+        element: <ManageOrders />,
       }
     ],
   },

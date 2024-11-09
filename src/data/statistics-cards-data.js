@@ -1,55 +1,50 @@
-import {
-  BanknotesIcon,
-  UserPlusIcon,
-  UsersIcon,
-  ChartBarIcon,
-} from "@heroicons/react/24/solid";
+import { CurrencyDollarIcon, GiftIcon, ShoppingBagIcon, UsersIcon } from "@heroicons/react/24/solid";
 
 export const statisticsCardsData = [
   {
     color: "gray",
-    icon: BanknotesIcon,
-    title: "Today's Money",
-    value: "$53k",
+    icon: UsersIcon,
+    title: "Total Users",
+    value: "128",
     footer: {
       color: "text-green-500",
       value: "+55%",
-      label: "than last week",
-    },
-  },
-  {
-    color: "gray",
-    icon: UsersIcon,
-    title: "Today's Users",
-    value: "2,300",
-    footer: {
-      color: "text-green-500",
-      value: "+3%",
       label: "than last month",
     },
   },
   {
     color: "gray",
-    icon: UserPlusIcon,
-    title: "New Clients",
-    value: "3,462",
+    icon: GiftIcon,
+    title: "Active Promotions",
+    value: "8",
     footer: {
       color: "text-red-500",
-      value: "-2%",
-      label: "than yesterday",
-    },
+      value: "-10%",
+      label: "than last month"
+    }
   },
   {
     color: "gray",
-    icon: ChartBarIcon,
-    title: "Sales",
-    value: "$103,430",
+    icon: CurrencyDollarIcon,
+    title: "Points Issued",
+    value: "15000",
     footer: {
       color: "text-green-500",
-      value: "+5%",
-      label: "than yesterday",
-    },
+      value: "+30%",
+      label: "from previous month"
+    }
   },
+  {
+    color: "gray",
+    icon: ShoppingBagIcon,
+    title: "Redemptions",
+    value: "75",
+    footer: {
+      color: "text-green-500",
+      value: "+12%",
+      label: "than last month"
+    }
+  }
 ];
 
 export default statisticsCardsData;

@@ -9,3 +9,5 @@ export * from "@/data/authors-table-data";
 
 export * from "@/data/categories-data";
 export * from "@/data/courses-data";
+export * from "@/data/customer-activity-data";
+export * from "@/data/promotions-data";

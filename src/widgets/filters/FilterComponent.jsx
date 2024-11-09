@@ -1,11 +1,10 @@
-import React from 'react';
 import { Input } from "@material-tailwind/react";
 
-const FilterComponent = ({ filterText, onFilter }) => (
+const FilterComponent = ({ filterText, filterLabel, onFilter }) => (
   <div className="mb-0 p-4 flex gap-4 justify-between items-center bg-transparent">
     <Input
       type="text"
-      label="Search Categories"
+      label={filterLabel}
       value={filterText}
       onChange={onFilter}
       className="flex-grow"

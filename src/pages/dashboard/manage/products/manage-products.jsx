@@ -5,31 +5,38 @@ import {
     Button,
     Typography,
     Input,
+    Textarea,
     Dialog,
     DialogBody,
     DialogHeader,
     DialogFooter,
+    Select,
+    Option,
 } from "@material-tailwind/react";
 import DataTable from "react-data-table-component";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useForm } from "react-hook-form";
 import FilterComponent from "@/widgets/filters/FilterComponent";
-import { Squares2X2Icon } from "@heroicons/react/24/solid";
+import { ArchiveBoxIcon } from "@heroicons/react/24/solid";
 
-const CategoryManagement = () => {
+const ProductManagement = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [pending, setPending] = useState(true);
-    const [categories, setCategories] = useState([
+    const [products, setProducts] = useState([
+        { id: 1, name: "Smartphone", price: 699, category: "Electronics", description: "Latest smartphone" },
+        { id: 2, name: "T-shirt", price: 29, category: "Clothing", description: "100% cotton" },
+    ]);
+    const categories = [
         { id: 1, name: "Electronics", description: "Devices and gadgets" },
         { id: 2, name: "Clothing", description: "Apparel and accessories" },
-    ]);
+    ];
 
     const [showAddDialog, setShowAddDialog] = useState(false);
     const [showEditDialog, setShowEditDialog] = useState(false);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-    const [editingCategory, setEditingCategory] = useState(null);
-    const [deleteCategoryId, setDeleteCategoryId] = useState(null);
+    const [editingProduct, setEditingProduct] = useState(null);
+    const [deleteProductId, setDeleteProductId] = useState(null);
 
     const { handleSubmit, register, formState: { errors }, setValue, reset } = useForm();
 
@@ -40,13 +47,15 @@ const CategoryManagement = () => {
     const handleSearch = (value) => setSearchQuery(value);
 
     const filteredData = useMemo(() => (
-        categories.filter((cat) =>
-            cat.name.toLowerCase().includes(searchQuery.toLowerCase())
+        products.filter((product) =>
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
         )
-    ), [searchQuery, categories]);
+    ), [searchQuery, products]);
 
     const columns = [
-        { name: "Category Name", selector: (row) => row.name, sortable: true },
+        { name: "Product Name", selector: (row) => row.name, sortable: true },
+        { name: "Price ($)", selector: (row) => row.price, sortable: true },
+        { name: "Category", selector: (row) => row.category, sortable: true },
         { name: "Description", selector: (row) => row.description, sortable: true },
         {
             name: "Actions",
@@ -59,37 +68,39 @@ const CategoryManagement = () => {
         },
     ];
 
-    const handleEdit = (category) => {
-        setEditingCategory(category);
+    const handleEdit = (product) => {
+        setEditingProduct(product);
         setShowEditDialog(true);
-        setValue("name", category.name);
-        setValue("description", category.description);
+        setValue("name", product.name);
+        setValue("price", product.price);
+        setValue("category", product.category);
+        setValue("description", product.description);
     };
 
     const handleDelete = (id) => {
-        setDeleteCategoryId(id);
+        setDeleteProductId(id);
         setShowDeleteDialog(true);
     };
 
-    const handleAddCategory = (data) => {
-        const newCategory = { ...data, id: categories.length + 1 };
-        setCategories([...categories, newCategory]);
-        toast.success("Category added successfully!");
+    const handleAddProduct = (data) => {
+        const newProduct = { ...data, id: products.length + 1 };
+        setProducts([...products, newProduct]);
+        toast.success("Product added successfully!");
         setShowAddDialog(false);
     };
 
-    const handleUpdateCategory = (data) => {
-        const updatedCategories = categories.map((cat) =>
-            cat.id === editingCategory.id ? { ...editingCategory, ...data } : cat
+    const handleUpdateProduct = (data) => {
+        const updatedProducts = products.map((prod) =>
+            prod.id === editingProduct.id ? { ...editingProduct, ...data } : prod
         );
-        setCategories(updatedCategories);
-        toast.success("Category updated successfully!");
+        setProducts(updatedProducts);
+        toast.success("Product updated successfully!");
         setShowEditDialog(false);
     };
 
-    const handleDeleteCategory = () => {
-        setCategories(categories.filter((cat) => cat.id !== deleteCategoryId));
-        toast.success("Category deleted successfully!");
+    const handleDeleteProduct = () => {
+        setProducts(products.filter((prod) => prod.id !== deleteProductId));
+        toast.success("Product deleted successfully!");
         setShowDeleteDialog(false);
     };
 
@@ -99,7 +110,7 @@ const CategoryManagement = () => {
     };
     const closeEditDialog = () => {
         reset();
-        setEditingCategory(null);
+        setEditingProduct(null);
         setShowEditDialog(false);
     };
     const closeDeleteDialog = () => setShowDeleteDialog(false);
@@ -110,9 +121,9 @@ const CategoryManagement = () => {
                 <DataTable
                     title={
                         <div className="flex items-center gap-2">
-                            <Squares2X2Icon className="h-5 w-5 text-blue-gray-700" />
+                            <ArchiveBoxIcon className="h-5 w-5 text-blue-gray-700" />
                             <Typography variant="h6" className="text-blue-gray-800 font-semibold">
-                                Category Management
+                                Product Management
                             </Typography>
                         </div>
                     }
@@ -126,14 +137,14 @@ const CategoryManagement = () => {
                             <div className="flex-grow">
                                 <FilterComponent
                                     filterText={searchQuery}
-                                    filterLabel="Search by Category Name"
+                                    filterLabel="Search by Product Name"
                                     onFilter={(e) => handleSearch(e.target.value)}
-                                    placeholder="Search by Category name"
+                                    placeholder="Search by Product Name"
                                 />
                             </div>
                             <div className="w-1/5">
                                 <Button className="w-full" onClick={() => setShowAddDialog(true)}>
-                                    Add New Category
+                                    Add New Product
                                 </Button>
                             </div>
                         </div>
@@ -141,25 +152,36 @@ const CategoryManagement = () => {
                 />
             </CardBody>
 
-            {/* Add/Edit Category Dialog */}
+            {/* Add/Edit Product Dialog */}
             <Dialog open={showAddDialog || showEditDialog} handler={closeAddDialog}>
                 <DialogHeader>
-                    <Typography variant="h4">{showAddDialog ? "Add New Category" : "Edit Category"}</Typography>
+                    <Typography variant="h4">{showAddDialog ? "Add New Product" : "Edit Product"}</Typography>
                 </DialogHeader>
-                <DialogBody className="space-y-4 pb-6">
-                    <form onSubmit={handleSubmit(showAddDialog ? handleAddCategory : handleUpdateCategory)} className="space-y-4">
+                <DialogBody>
+                    <form onSubmit={handleSubmit(showAddDialog ? handleAddProduct : handleUpdateProduct)} className="space-y-4">
                         <Input
-                            label="Category Name"
-                            {...register("name", { required: "Category name is required" })}
+                            label="Product Name"
+                            {...register("name", { required: "Product name is required" })}
                             error={errors.name}
                         />
                         <Input
+                            label="Price"
+                            type="number"
+                            {...register("price", { required: "Price is required", valueAsNumber: true })}
+                            error={errors.price}
+                        />
+                        <Select label="Category" {...register("category", { required: "Category is required" })}>
+                            {categories.map((cat) => (
+                                <Option key={cat.id} value={cat.name}>{cat.name}</Option>
+                            ))}
+                        </Select>
+                        <Textarea
                             label="Description"
                             {...register("description", { required: "Description is required" })}
                             error={errors.description}
                         />
                         <DialogFooter>
-                            <Button type="submit">{showAddDialog ? "Add" : "Update"}</Button>
+                            <Button type="submit">{showAddDialog ? "Add Product" : "Update Product"}</Button>
                             <Button variant="outlined" onClick={showAddDialog ? closeAddDialog : closeEditDialog}>Cancel</Button>
                         </DialogFooter>
                     </form>
@@ -172,10 +194,10 @@ const CategoryManagement = () => {
                     <Typography variant="h6" color="red">Confirm Delete</Typography>
                 </DialogHeader>
                 <DialogBody>
-                    <Typography>Are you sure you want to delete this category?</Typography>
+                    <Typography>Are you sure you want to delete this product?</Typography>
                 </DialogBody>
                 <DialogFooter>
-                    <Button color="red" onClick={handleDeleteCategory}>Delete</Button>
+                    <Button color="red" onClick={handleDeleteProduct}>Delete</Button>
                     <Button variant="outlined" onClick={closeDeleteDialog}>Cancel</Button>
                 </DialogFooter>
             </Dialog>
@@ -183,4 +205,4 @@ const CategoryManagement = () => {
     );
 };
 
-export default CategoryManagement;
+export default ProductManagement;
