@@ -3,7 +3,10 @@
   "private": true,
   "version": "2.1.0",
   "type": "module",
+  "homepage": "https://akshaygawande70.github.io/Rewarzo",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -48,6 +51,7 @@
     "@types/react-dom": "18.2.14",
     "@vitejs/plugin-react": "4.1.0",
     "autoprefixer": "10.4.16",
+    "gh-pages": "^6.2.0",
     "postcss": "8.4.31",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.6",
