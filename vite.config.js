@@ -6,4 +6,5 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],
   },
+  base: '/Rewarzo/', // Adjust the path as per your GitHub repository name
 });
