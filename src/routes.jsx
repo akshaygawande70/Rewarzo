@@ -1,13 +1,5 @@
-import {
-  HomeIcon,
-  UserCircleIcon,
-  InformationCircleIcon,
-  ServerStackIcon,
-  RectangleStackIcon,
-  BookOpenIcon,
-} from "@heroicons/react/24/solid";
-import { Home, Profile, Notifications } from "@/pages/dashboard";
-import { SignIn, SignUp } from "@/pages/auth";
+import { HomeIcon, BookOpenIcon } from "@heroicons/react/24/solid";
+import { Home } from "@/pages/dashboard";
 import LoyaltyTierManagement from "./pages/dashboard/manage/loyalty-tiers/manage-loyalty-tier";
 import CustomerManagement from "./pages/dashboard/manage/customers/manage-customers";
 import ManageOrders from "./pages/dashboard/manage/orders/manage-orders";
@@ -30,28 +22,28 @@ export const routes = [
         element: <Home />,
       },
       {
-        icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        icon: <InformationCircleIcon {...icon} />,
-        name: "notifications",
-        path: "/notifications",
-        element: <Notifications />,
-      },
+        icon: <BookOpenIcon {...icon} />,
+        name: "New Order",
+        path: "/new-order",
+        element: <NewOrderScreen />,
+      }
     ],
   },
   {
-    title: "Learning",
+    title: "Manage",
     layout: "dashboard",
     pages: [
       {
         icon: <BookOpenIcon {...icon} />,
-        name: "Loyalty Tier",
-        path: "/manage-loyalty-tier",
-        element: <LoyaltyTierManagement />,
+        name: "Orders",
+        path: "/manage-orders",
+        element: <ManageOrders />,
+      },
+      {
+        icon: <BookOpenIcon {...icon} />,
+        name: "Products",
+        path: "/manage-products",
+        element: <ProductManagement />,
       },
       {
         icon: <BookOpenIcon {...icon} />,
@@ -61,60 +53,36 @@ export const routes = [
       },
       {
         icon: <BookOpenIcon {...icon} />,
-        name: "New Order",
-        path: "/new-order",
-        element: <NewOrderScreen />,
-      },
-      {
-        icon: <BookOpenIcon {...icon} />,
-        name: "Orders",
-        path: "/manage-orders",
-        element: <ManageOrders />,
-      },
-      {
-        icon: <BookOpenIcon {...icon} />,
         name: "Categories",
         path: "/manage-categories",
         element: <CategoryManagement />,
       },
       {
         icon: <BookOpenIcon {...icon} />,
-        name: "Products",
-        path: "/manage-products",
-        element: <ProductManagement />,
+        name: "Loyalty Tier",
+        path: "/manage-loyalty-tier",
+        element: <LoyaltyTierManagement />,
       }
     ],
   },
-  {
-    title: "Master",
-    layout: "dashboard",
-    pages: [
-      {
-        icon: <BookOpenIcon {...icon} />,
-        name: "Orders",
-        path: "/manage-orders",
-        element: <ManageOrders />,
-      }
-    ],
-  },
-  {
-    title: "auth pages",
-    layout: "auth",
-    pages: [
-      {
-        icon: <ServerStackIcon {...icon} />,
-        name: "sign in",
-        path: "/sign-in",
-        element: <SignIn />,
-      },
-      {
-        icon: <RectangleStackIcon {...icon} />,
-        name: "sign up",
-        path: "/sign-up",
-        element: <SignUp />,
-      },
-    ],
-  },
+  // {
+  //   title: "auth pages",
+  //   layout: "auth",
+  //   pages: [
+  //     {
+  //       icon: <ServerStackIcon {...icon} />,
+  //       name: "sign in",
+  //       path: "/sign-in",
+  //       element: <SignIn />,
+  //     },
+  //     {
+  //       icon: <RectangleStackIcon {...icon} />,
+  //       name: "sign up",
+  //       path: "/sign-up",
+  //       element: <SignUp />,
+  //     },
+  //   ],
+  // },
 ];
 
 export default routes;
